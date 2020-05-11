@@ -2709,7 +2709,7 @@ static void lo_setupmapping(fuse_req_t req, fuse_ino_t ino, uint64_t foffset,
     msg.flags[0] = vhu_flags;
 
     if (fi) {
-        fd = fi->fh;
+        fd = lo_fi_fd(req, fi);
     } else {
         res = asprintf(&buf, "%i", lo_fd(req, ino));
         if (res == -1) {
